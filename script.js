@@ -1,10 +1,12 @@
 let currentQ = 0;
 let correctAnswer = 0;
+let p = 0;
 showQuestion();
 
-let p = Math.floor( (correctAnswer/questions.length) * 100 );
 
 function showQuestion(){
+    p = Math.floor( (correctAnswer / questions.length) * 100 );
+
     if(questions[currentQ]){
     
         let quest = questions[currentQ];
@@ -47,13 +49,18 @@ function selectOp(e){
 }
 
 function showResult(){
-    console.log(p);
-    console.log(correctAnswer);
-    console.log(questions.length);
 
     if(p <30){
         document.querySelector('.scoreText1').innerHTML = "Você está ruim";
         document.querySelector('.scorePct').innerHTML = `Você acertou ${p}%`;
         document.querySelector('.scoreText2').innerHTML = `Você respondeu ${questions.length} questões e acertou ${correctAnswer}.`;
-    }
+    } else if(p >=70){
+        document.querySelector('.scoreText1').innerHTML = "Você é o cara!";
+        document.querySelector('.scorePct').innerHTML = `Você acertou ${p}%`;
+        document.querySelector('.scoreText2').innerHTML = `Você respondeu ${questions.length} questões e acertou ${correctAnswer}.`;
+    } else{
+        document.querySelector('.scoreText1').innerHTML = "Muito bem!";
+        document.querySelector('.scorePct').innerHTML = `Você acertou ${p}%`;
+        document.querySelector('.scoreText2').innerHTML = `Você respondeu ${questions.length} questões e acertou ${correctAnswer}.`;
+    };
 }
